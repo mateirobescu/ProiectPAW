@@ -7,28 +7,45 @@ using System.Threading.Tasks;
 namespace ProiectPAW
 {
 	//internal abstract class Word
-	internal class Word
+	[Serializable]
+	public class Word
 	{
-		private Guid id;
+		private long id;
 		private string languageIsoCode;
 		private string text;
 		private string description;
-		private Dictionary<string, List<Guid>> translations;
+		private Dictionary<string, List<long>> translations;
+		private static long idGenerator;
 
 		public string Id { get => id.ToString(); }
 		public string Text { get => text; }
 		public string Description { get => description; }
 		public string LanguageIsoCode { get => languageIsoCode; }
-		public Dictionary<string, List<Guid>> Translations { get => translations; }
+		public Dictionary<string, List<long>> Translations { get => translations; }
 
 		private Word() { }
 
 		public Word(string text, string languageIsoCode, string description)
 		{
-			this.id = Guid.NewGuid();
+			this.id = Word.idGenerator++;
 			this.text = text;
 			this.languageIsoCode = languageIsoCode.ToUpper();
 			this.description = description;
+		}
+
+		public override string ToString()
+		{
+			//return String.Format("Word[{0}, {1}]")
+			throw new NotImplementedException();
+		}
+
+		public static void calculateIdGenerator(List<Word> existingWords)
+		{
+			long maxId = 0;
+			foreach (Word word in existingWords)
+				maxId = Math.Max(maxId, word.id);
+
+			Word.idGenerator = maxId + 1;
 		}
 
 	}

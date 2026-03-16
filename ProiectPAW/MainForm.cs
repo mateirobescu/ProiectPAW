@@ -10,9 +10,12 @@ using System.Windows.Forms;
 
 namespace ProiectPAW
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
-		public Form1()
+		private AppData Data => AppData.Instance;
+		private const string BINARY_FILENAME = "dicitonary.dat";
+
+		public MainForm()
 		{
 			InitializeComponent();
 			Language en = new Language("EN", "English");
@@ -48,8 +51,21 @@ namespace ProiectPAW
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-
+			 AppData.LoadFromBinary(BINARY_FILENAME);
 		}
 
+		private void addLangBtn_Click(object sender, EventArgs e)
+		{
+			AddLangForm alf = new AddLangForm(this.Data.AllLanguages);
+			//DEBUG
+			MessageBox.Show(String.Join(" ", this.Data.AllLanguages));
+			alf.ShowDialog();
+		}
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AppData.saveToBinary(this.Data, BINARY_FILENAME);
+			MessageBox.Show("Data was saved succesfully!");
+		}
 	}
 }

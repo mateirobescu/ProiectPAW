@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ProiectPAW
+{
+	public partial class AddLangForm : Form
+	{
+		private List<Language> allLanguages;
+
+		public AddLangForm(List<Language> allLanguages)
+		{
+			InitializeComponent();
+			this.allLanguages = allLanguages;
+		}
+
+		private void addLangBtn_Click(object sender, EventArgs e)
+		{
+			langErrorProvider.Clear();
+
+			if (String.IsNullOrWhiteSpace(iso2CodeTb.Text))
+			{
+				langErrorProvider.SetError(iso2CodeTb, "This should not be empty!");
+				return;
+			}
+
+			if (iso2CodeTb.Text.Length != 2)
+			{
+				langErrorProvider.SetError(iso2CodeTb, "The ISO code should have 2 characters!");
+				return;
+			}
+
+			if (String.IsNullOrWhiteSpace(langNameTb.Text))
+			{
+				langErrorProvider.SetError(langNameTb, "This should not be empty!");
+				return;
+			}
+
+			iso2CodeTb.Text = iso2CodeTb.Text.ToUpper();
+
+			foreach(Language lang in this.allLanguages)
+				if(iso2CodeTb.Text.Equals(lang.IsoCode))
+				{
+					langErrorProvider.SetError(iso2CodeTb, "This language already exists!");
+					return;
+				}
+
+			Language newLang = new Language(iso2CodeTb.Text, langNameTb.Text);
+			this.allLanguages.Add(newLang);
+
+			this.Close();
+		}
+	}
+}

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProiectPAW
 {
-	internal class Language
+	[Serializable]
+	public class Language
 	{
 		private string isoCode;
 		private string defaultName;
@@ -20,6 +21,11 @@ namespace ProiectPAW
 		{
 			this.isoCode = isoCode.ToUpper();
 			this.defaultName = defaultName;
+		}
+
+		override public string ToString()
+		{
+			return String.Format("Languge[{0}, {1}]", this.isoCode, this.defaultName);
 		}
 
 	}
