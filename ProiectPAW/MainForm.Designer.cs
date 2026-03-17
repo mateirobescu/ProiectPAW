@@ -34,14 +34,18 @@
 			this.language = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.searchTb = new System.Windows.Forms.TextBox();
-			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.addLangBtn = new System.Windows.Forms.Button();
 			this.addWordBtn = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.searchTimer = new System.Windows.Forms.Timer(this.components);
+			this.wordsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
+			this.wordsMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lvWords
@@ -51,9 +55,12 @@
             this.word,
             this.language,
             this.description});
+			this.lvWords.ContextMenuStrip = this.wordsMenuStrip;
+			this.lvWords.FullRowSelect = true;
 			this.lvWords.GridLines = true;
 			this.lvWords.HideSelection = false;
 			this.lvWords.Location = new System.Drawing.Point(410, 201);
+			this.lvWords.MultiSelect = false;
 			this.lvWords.Name = "lvWords";
 			this.lvWords.Size = new System.Drawing.Size(1052, 797);
 			this.lvWords.TabIndex = 0;
@@ -82,12 +89,6 @@
 			this.searchTb.Size = new System.Drawing.Size(600, 35);
 			this.searchTb.TabIndex = 1;
 			this.searchTb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-			// 
-			// contextMenuStrip1
-			// 
-			this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
-			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
 			// 
 			// label1
 			// 
@@ -126,7 +127,7 @@
             this.saveToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1488, 45);
+			this.menuStrip1.Size = new System.Drawing.Size(1488, 47);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -141,6 +142,34 @@
 			// 
 			this.searchTimer.Interval = 400;
 			this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
+			// 
+			// wordsMenuStrip
+			// 
+			this.wordsMenuStrip.ImageScalingSize = new System.Drawing.Size(36, 36);
+			this.wordsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.deleteToolStripMenuItem1});
+			this.wordsMenuStrip.Name = "contextMenuStrip2";
+			this.wordsMenuStrip.Size = new System.Drawing.Size(172, 136);
+			// 
+			// editToolStripMenuItem
+			// 
+			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+			this.editToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
+			this.editToolStripMenuItem.Text = "View";
+			// 
+			// deleteToolStripMenuItem
+			// 
+			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
+			this.deleteToolStripMenuItem.Text = "Edit";
+			// 
+			// deleteToolStripMenuItem1
+			// 
+			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(330, 44);
+			this.deleteToolStripMenuItem1.Text = "Delete";
 			// 
 			// MainForm
 			// 
@@ -159,6 +188,7 @@
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.wordsMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -171,13 +201,16 @@
 		private System.Windows.Forms.ColumnHeader language;
 		private System.Windows.Forms.ColumnHeader description;
 		private System.Windows.Forms.TextBox searchTb;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button addLangBtn;
 		private System.Windows.Forms.Button addWordBtn;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.Timer searchTimer;
+		private System.Windows.Forms.ContextMenuStrip wordsMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
 	}
 }
 

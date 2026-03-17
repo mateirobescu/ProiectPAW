@@ -35,6 +35,15 @@
 			this.feminineRbtn = new System.Windows.Forms.RadioButton();
 			this.masculineRbtn = new System.Windows.Forms.RadioButton();
 			this.adjectiveTabPage = new System.Windows.Forms.TabPage();
+			this.varFormChck = new System.Windows.Forms.CheckBox();
+			this.femPlrTb = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.mascPlrTb = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.femSngTb = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.mascSngTb = new System.Windows.Forms.TextBox();
+			this.mascSngLb = new System.Windows.Forms.Label();
 			this.addWordBtn = new System.Windows.Forms.Button();
 			this.wordTextTb = new System.Windows.Forms.TextBox();
 			this.wordLb = new System.Windows.Forms.Label();
@@ -45,6 +54,7 @@
 			this.wordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.wordAddTabCtrl.SuspendLayout();
 			this.nounTabPage.SuspendLayout();
+			this.adjectiveTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -52,11 +62,12 @@
 			// 
 			this.wordAddTabCtrl.Controls.Add(this.nounTabPage);
 			this.wordAddTabCtrl.Controls.Add(this.adjectiveTabPage);
-			this.wordAddTabCtrl.Location = new System.Drawing.Point(35, 231);
+			this.wordAddTabCtrl.Location = new System.Drawing.Point(526, 57);
 			this.wordAddTabCtrl.Name = "wordAddTabCtrl";
 			this.wordAddTabCtrl.SelectedIndex = 0;
-			this.wordAddTabCtrl.Size = new System.Drawing.Size(464, 294);
+			this.wordAddTabCtrl.Size = new System.Drawing.Size(464, 480);
 			this.wordAddTabCtrl.TabIndex = 0;
+			this.wordAddTabCtrl.Selected += new System.Windows.Forms.TabControlEventHandler(this.wordAddTabCtrl_Selected);
 			// 
 			// nounTabPage
 			// 
@@ -66,7 +77,7 @@
 			this.nounTabPage.Location = new System.Drawing.Point(10, 47);
 			this.nounTabPage.Name = "nounTabPage";
 			this.nounTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.nounTabPage.Size = new System.Drawing.Size(444, 237);
+			this.nounTabPage.Size = new System.Drawing.Size(444, 423);
 			this.nounTabPage.TabIndex = 0;
 			this.nounTabPage.Text = "Noun";
 			this.nounTabPage.UseVisualStyleBackColor = true;
@@ -106,13 +117,100 @@
 			// 
 			// adjectiveTabPage
 			// 
+			this.adjectiveTabPage.Controls.Add(this.varFormChck);
+			this.adjectiveTabPage.Controls.Add(this.femPlrTb);
+			this.adjectiveTabPage.Controls.Add(this.label6);
+			this.adjectiveTabPage.Controls.Add(this.mascPlrTb);
+			this.adjectiveTabPage.Controls.Add(this.label5);
+			this.adjectiveTabPage.Controls.Add(this.femSngTb);
+			this.adjectiveTabPage.Controls.Add(this.label4);
+			this.adjectiveTabPage.Controls.Add(this.mascSngTb);
+			this.adjectiveTabPage.Controls.Add(this.mascSngLb);
 			this.adjectiveTabPage.Location = new System.Drawing.Point(10, 47);
 			this.adjectiveTabPage.Name = "adjectiveTabPage";
 			this.adjectiveTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.adjectiveTabPage.Size = new System.Drawing.Size(444, 237);
+			this.adjectiveTabPage.Size = new System.Drawing.Size(444, 423);
 			this.adjectiveTabPage.TabIndex = 1;
 			this.adjectiveTabPage.Text = "Adjective";
 			this.adjectiveTabPage.UseVisualStyleBackColor = true;
+			// 
+			// varFormChck
+			// 
+			this.varFormChck.AutoSize = true;
+			this.varFormChck.Checked = true;
+			this.varFormChck.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.varFormChck.Location = new System.Drawing.Point(21, 39);
+			this.varFormChck.Name = "varFormChck";
+			this.varFormChck.Size = new System.Drawing.Size(197, 33);
+			this.varFormChck.TabIndex = 8;
+			this.varFormChck.Text = "Variable Form";
+			this.varFormChck.UseVisualStyleBackColor = true;
+			this.varFormChck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// femPlrTb
+			// 
+			this.femPlrTb.Location = new System.Drawing.Point(11, 373);
+			this.femPlrTb.Name = "femPlrTb";
+			this.femPlrTb.Size = new System.Drawing.Size(282, 35);
+			this.femPlrTb.TabIndex = 7;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(16, 341);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(182, 29);
+			this.label6.TabIndex = 6;
+			this.label6.Text = "Feminine Plural";
+			// 
+			// mascPlrTb
+			// 
+			this.mascPlrTb.Location = new System.Drawing.Point(11, 291);
+			this.mascPlrTb.Name = "mascPlrTb";
+			this.mascPlrTb.Size = new System.Drawing.Size(282, 35);
+			this.mascPlrTb.TabIndex = 5;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(16, 259);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(190, 29);
+			this.label5.TabIndex = 4;
+			this.label5.Text = "Masculine Plural";
+			// 
+			// femSngTb
+			// 
+			this.femSngTb.Location = new System.Drawing.Point(11, 207);
+			this.femSngTb.Name = "femSngTb";
+			this.femSngTb.Size = new System.Drawing.Size(282, 35);
+			this.femSngTb.TabIndex = 3;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(16, 175);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(209, 29);
+			this.label4.TabIndex = 2;
+			this.label4.Text = "Feminine Singular";
+			// 
+			// mascSngTb
+			// 
+			this.mascSngTb.Location = new System.Drawing.Point(11, 125);
+			this.mascSngTb.Name = "mascSngTb";
+			this.mascSngTb.Size = new System.Drawing.Size(282, 35);
+			this.mascSngTb.TabIndex = 1;
+			this.mascSngTb.TextChanged += new System.EventHandler(this.mascSngTb_TextChanged);
+			// 
+			// mascSngLb
+			// 
+			this.mascSngLb.AutoSize = true;
+			this.mascSngLb.Location = new System.Drawing.Point(16, 93);
+			this.mascSngLb.Name = "mascSngLb";
+			this.mascSngLb.Size = new System.Drawing.Size(217, 29);
+			this.mascSngLb.TabIndex = 0;
+			this.mascSngLb.Text = "Masculine Singular";
 			// 
 			// addWordBtn
 			// 
@@ -130,6 +228,7 @@
 			this.wordTextTb.Name = "wordTextTb";
 			this.wordTextTb.Size = new System.Drawing.Size(346, 35);
 			this.wordTextTb.TabIndex = 0;
+			this.wordTextTb.TextChanged += new System.EventHandler(this.wordTextTb_TextChanged);
 			// 
 			// wordLb
 			// 
@@ -161,7 +260,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(530, 25);
+			this.label2.Location = new System.Drawing.Point(40, 217);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(135, 29);
 			this.label2.TabIndex = 4;
@@ -169,9 +268,9 @@
 			// 
 			// descriptionRtb
 			// 
-			this.descriptionRtb.Location = new System.Drawing.Point(535, 57);
+			this.descriptionRtb.Location = new System.Drawing.Point(45, 249);
 			this.descriptionRtb.Name = "descriptionRtb";
-			this.descriptionRtb.Size = new System.Drawing.Size(455, 458);
+			this.descriptionRtb.Size = new System.Drawing.Size(346, 288);
 			this.descriptionRtb.TabIndex = 5;
 			this.descriptionRtb.Text = "";
 			// 
@@ -198,6 +297,8 @@
 			this.wordAddTabCtrl.ResumeLayout(false);
 			this.nounTabPage.ResumeLayout(false);
 			this.nounTabPage.PerformLayout();
+			this.adjectiveTabPage.ResumeLayout(false);
+			this.adjectiveTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -220,5 +321,14 @@
 		private System.Windows.Forms.RadioButton feminineRbtn;
 		private System.Windows.Forms.RadioButton masculineRbtn;
 		private System.Windows.Forms.ErrorProvider wordErrorProvider;
+		private System.Windows.Forms.TextBox femPlrTb;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox mascPlrTb;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox femSngTb;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TextBox mascSngTb;
+		private System.Windows.Forms.Label mascSngLb;
+		private System.Windows.Forms.CheckBox varFormChck;
 	}
 }

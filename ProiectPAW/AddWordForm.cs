@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,8 +58,10 @@ namespace ProiectPAW
 			Word word = null;
 			if (wordAddTabCtrl.SelectedTab == nounTabPage)
 				word = CreateNoun(text, languageIsoCode, description);
-			
-			if(word != null)
+			else if(wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+				word = CreateAdjective(text, languageIsoCode, description);
+
+			if (word != null)
 			{
 				Data.AllWords.Add(word);
 				this.DialogResult = DialogResult.OK;
@@ -85,6 +88,78 @@ namespace ProiectPAW
 
 			Noun noun = new Noun(text, languageIsoCode, description, gender);
 			return noun;
+		}
+
+		private Word CreateAdjective(string text, string languageIsoCode, string description)
+		{
+			if(varFormChck.Checked)
+			{
+				if(String.IsNullOrWhiteSpace(mascSngTb.Text))
+				{
+					wordErrorProvider.SetError(mascSngTb, "This field cannot be empty!");
+					return null;
+				}
+				if (String.IsNullOrWhiteSpace(femSngTb.Text))
+				{
+					wordErrorProvider.SetError(femSngTb, "This field cannot be empty!");
+					return null;
+				}
+				if (String.IsNullOrWhiteSpace(mascPlrTb.Text))
+				{
+					wordErrorProvider.SetError(mascPlrTb, "This field cannot be empty!");
+					return null;
+				}
+				if (String.IsNullOrWhiteSpace(femPlrTb.Text))
+				{
+					wordErrorProvider.SetError(femPlrTb, "This field cannot be empty!");
+					return null;
+				}
+			}
+
+			bool hasVarForm = varFormChck.Checked;
+			string[] varForms = null;
+			if(hasVarForm)
+				varForms = new string[] { mascSngTb.Text, femSngTb.Text, mascPlrTb.Text, femPlrTb.Text };
+
+			Adjective adj = new Adjective(text, languageIsoCode, description, hasVarForm, varForms);
+			return adj;
+		}
+
+
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+			if(varFormChck.Checked)
+			{
+				mascSngTb.Enabled = true;
+				femSngTb.Enabled = true;
+				mascPlrTb.Enabled = true;
+				femPlrTb.Enabled = true;
+			} else
+			{
+				mascSngTb.Enabled = false;
+				femSngTb.Enabled = false;
+				mascPlrTb.Enabled = false;
+				femPlrTb.Enabled = false;
+			}
+		}
+
+		private void mascSngTb_TextChanged(object sender, EventArgs e)
+		{
+			wordTextTb.Text = mascSngTb.Text;
+		}
+
+		private void wordTextTb_TextChanged(object sender, EventArgs e)
+		{
+			if(wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+			{
+				mascSngTb.Text = wordTextTb.Text;
+			}
+		}
+
+		private void wordAddTabCtrl_Selected(object sender, TabControlEventArgs e)
+		{
+			if (wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+				mascSngTb.Text = wordTextTb.Text;
 		}
 	}
 }

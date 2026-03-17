@@ -59,6 +59,7 @@
     <Compile Include="AddWordForm.Designer.cs">
       <DependentUpon>AddWordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adjective.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
