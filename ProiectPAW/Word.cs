@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProiectPAW
 {
-	//internal abstract class Word
 	[Serializable]
-	public class Word
+	public abstract class Word
 	{
 		private long id;
 		private string languageIsoCode;
@@ -31,6 +30,7 @@ namespace ProiectPAW
 			this.text = text;
 			this.languageIsoCode = languageIsoCode.ToUpper();
 			this.description = description;
+			this.translations = new Dictionary<string, List<long>>();
 		}
 
 		public override string ToString()

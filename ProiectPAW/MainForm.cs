@@ -18,22 +18,46 @@ namespace ProiectPAW
 		public MainForm()
 		{
 			InitializeComponent();
-			Language en = new Language("EN", "English");
-			Language ro = new Language("RO", "Romanian");
 
-			Word tableEn = new Word("Table", "EN", "Table object");
-			Word tableRO = new Word("Masa", "RO", "Obiectul masa");
-			Word houseRO = new Word("Casa", "Rd", "Obiectul casa");
-			Word houseEn = new Word("House", "EN", "House Object");
-			List<Word> words = new List<Word> { tableEn, tableRO, houseRO, houseEn };
-			List<Language> languages = new List<Language> { en, ro};
+		}
 
-			foreach(Word w in words)
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			AppData.LoadFromBinary(BINARY_FILENAME);
+
+			this.displayWords(Data.AllWords);	
+		}
+
+		private void addLangBtn_Click(object sender, EventArgs e)
+		{
+			AddLangForm alf = new AddLangForm();
+			//DEBUG
+			MessageBox.Show(String.Join(" ", this.Data.AllLanguages));
+			alf.ShowDialog();
+		}
+
+		private void addWordBtn_Click(object sender, EventArgs e)
+		{
+			AddWordForm awf = new AddWordForm();
+			awf.ShowDialog();
+		}
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AppData.saveToBinary(this.Data, BINARY_FILENAME);
+			MessageBox.Show("Data was saved succesfully!");
+		}
+
+		private void displayWords(List<Word> words)
+		{
+			lvWords.Items.Clear();
+
+			foreach (Word w in words)
 			{
 				ListViewItem currItem = new ListViewItem(w.Text);
 
 				string language = "";
-				foreach (Language l in languages)
+				foreach (Language l in Data.AllLanguages)
 					if (l.IsoCode == w.LanguageIsoCode)
 						language = l.DefaultName;
 
@@ -46,26 +70,30 @@ namespace ProiectPAW
 
 				lvWords.Items.Add(currItem);
 			}
-			
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
-			 AppData.LoadFromBinary(BINARY_FILENAME);
+			searchTimer.Stop();
+
+			searchTimer.Start();
 		}
 
-		private void addLangBtn_Click(object sender, EventArgs e)
+		private void searchTimer_Tick(object sender, EventArgs e)
 		{
-			AddLangForm alf = new AddLangForm(this.Data.AllLanguages);
-			//DEBUG
-			MessageBox.Show(String.Join(" ", this.Data.AllLanguages));
-			alf.ShowDialog();
+			searchTimer.Stop();
+			List<Word> wordsFound = performSearch();
+			displayWords(wordsFound);
+
 		}
 
-		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		private List<Word> performSearch()
 		{
-			AppData.saveToBinary(this.Data, BINARY_FILENAME);
-			MessageBox.Show("Data was saved succesfully!");
+			string query = searchTb.Text;
+			return Data.AllWords.Where(
+					w => w.Text.ToLower().StartsWith(query)
+				).ToList();
 		}
+
 	}
 }

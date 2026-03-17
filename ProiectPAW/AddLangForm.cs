@@ -12,12 +12,11 @@ namespace ProiectPAW
 {
 	public partial class AddLangForm : Form
 	{
-		private List<Language> allLanguages;
+		private AppData Data => AppData.Instance;
 
-		public AddLangForm(List<Language> allLanguages)
+		public AddLangForm()
 		{
 			InitializeComponent();
-			this.allLanguages = allLanguages;
 		}
 
 		private void addLangBtn_Click(object sender, EventArgs e)
@@ -44,7 +43,7 @@ namespace ProiectPAW
 
 			iso2CodeTb.Text = iso2CodeTb.Text.ToUpper();
 
-			foreach(Language lang in this.allLanguages)
+			foreach(Language lang in this.Data.AllLanguages)
 				if(iso2CodeTb.Text.Equals(lang.IsoCode))
 				{
 					langErrorProvider.SetError(iso2CodeTb, "This language already exists!");
@@ -52,9 +51,10 @@ namespace ProiectPAW
 				}
 
 			Language newLang = new Language(iso2CodeTb.Text, langNameTb.Text);
-			this.allLanguages.Add(newLang);
-
+			this.Data.AllLanguages.Add(newLang);
+			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
+
 	}
 }
