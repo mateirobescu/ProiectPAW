@@ -10,22 +10,22 @@ namespace ProiectPAW
 	public class Language
 	{
 		private string isoCode;
-		private string defaultName;
+		private string name;
 
 		public string IsoCode { get => isoCode; set => isoCode = value; }
-		public string DefaultName { get => defaultName; set => defaultName = value; }
+		public string DefaultName { get => name; set => name = value; }
 
 		private Language() { }
 
 		public Language(string isoCode, string defaultName)
 		{
 			this.isoCode = isoCode.ToUpper();
-			this.defaultName = defaultName;
+			this.name = defaultName;
 		}
 
 		override public string ToString()
 		{
-			return String.Format("Languge[{0}, {1}]", this.isoCode, this.defaultName);
+			return String.Format("Languge[{0}, {1}]", this.isoCode, this.name);
 		}
 
 	}

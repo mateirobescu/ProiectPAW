@@ -11,8 +11,8 @@ namespace ProiectPAW
 	{
 		MS,
 		FS,
-		ML,
-		FL
+		MP,
+		FP
 	}
 
 	[Serializable]
@@ -30,8 +30,8 @@ namespace ProiectPAW
 				{
 					[AdjectiveForm.MS] = formsArr[0],
 					[AdjectiveForm.FS] = formsArr[1],
-					[AdjectiveForm.ML] = formsArr[2],
-					[AdjectiveForm.FL] = formsArr[3]
+					[AdjectiveForm.MP] = formsArr[2],
+					[AdjectiveForm.FP] = formsArr[3]
 				};
 		}
 

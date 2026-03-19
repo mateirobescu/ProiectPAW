@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="schema"
+    targetNamespace="http://tempuri.org/schema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/schema.xsd"
+    xmlns:mstns="http://tempuri.org/schema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <xs:element name="Dictionary">
+		<xs:complexType>
+			<xs:sequence>
+
+				<xs:element name="Languages">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Language" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Iso2Code" type="xs:string" minOccurs="1"/>
+										<xs:element name="Name" type="xs:string" minOccurs="1"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="Words">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="Noun" type="Noun"/>
+								<xs:element name="Adjective" type="Adjective"/>
+								<xs:element name="Verb" type="Verb"/>
+								<xs:element name="Other" type="Other"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Word" abstract="true">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:integer" minOccurs="1"/>
+			<xs:element name="LangIsoCode" type="xs:string" minOccurs="1"/>
+			<xs:element name="Text" type="xs:string" minOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="1"/>
+			<xs:element name="Translations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TranslatedWordId" type="xs:integer" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Noun">
+		<xs:complexContent>
+			<xs:extension base="Word">
+				<xs:sequence>
+					<xs:element name="Gender" type="xs:string" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Adjective">
+		<xs:complexContent>
+			<xs:extension base="Word">
+				<xs:sequence>
+					<xs:element name="HasVariableForm" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="Forms" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="MF" type="xs:string"/>
+								<xs:element name="FS" type="xs:string"/>
+								<xs:element name="MP" type="xs:string"/>
+								<xs:element name="FP" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Verb">
+		<xs:complexContent>
+			<xs:extension base="Word">
+				<xs:sequence>
+					<xs:element name="Conjugations" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Conjugation" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="Mood" type="xs:string"/>
+											<xs:element name="Tense" type="xs:string"/>
+											<xs:element name="Sg1" type="xs:string"/>
+											<xs:element name="Sg2" type="xs:string"/>
+											<xs:element name="Sg3" type="xs:string"/>
+											<xs:element name="Pl1" type="xs:string"/>
+											<xs:element name="Pl2" type="xs:string"/>
+											<xs:element name="Pl3" type="xs:string"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Other">
+		<xs:complexContent>
+			<xs:extension base="Word">
+				<xs:sequence>
+					<xs:element name="PartOfSpeech" type="xs:string" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>
