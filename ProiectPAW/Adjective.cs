@@ -25,13 +25,14 @@ namespace ProiectPAW
 			: base(text, languageIsoCode, description)
 		{
 			this.hasVariableForm = hasVariableForm;
-			this.forms = new Dictionary<AdjectiveForm, string>
-			{
-				[AdjectiveForm.MS] = formsArr[0],
-				[AdjectiveForm.FS] = formsArr[1],
-				[AdjectiveForm.ML] = formsArr[2],
-				[AdjectiveForm.FL] = formsArr[3]
-			};
+			if(hasVariableForm && formsArr != null)
+				this.forms = new Dictionary<AdjectiveForm, string>
+				{
+					[AdjectiveForm.MS] = formsArr[0],
+					[AdjectiveForm.FS] = formsArr[1],
+					[AdjectiveForm.ML] = formsArr[2],
+					[AdjectiveForm.FL] = formsArr[3]
+				};
 		}
 
 	}

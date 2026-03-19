@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace ProiectPAW
 	public partial class AddWordForm : Form
 	{
 		private AppData Data => AppData.Instance;
+		private List<VerbConjugation> currConjugations = new List<VerbConjugation>();
 		public AddWordForm()
 		{
 			InitializeComponent();
@@ -56,10 +58,12 @@ namespace ProiectPAW
 			string languageIsoCode = languageCb.SelectedValue.ToString();
 			string description = descriptionRtb.Text;
 			Word word = null;
-			if (wordAddTabCtrl.SelectedTab == nounTabPage)
+			if (wordAddTabCtrl.SelectedTab == tabPageNoun)
 				word = CreateNoun(text, languageIsoCode, description);
-			else if(wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+			else if (wordAddTabCtrl.SelectedTab == tabPageAdjective)
 				word = CreateAdjective(text, languageIsoCode, description);
+			else if (wordAddTabCtrl.SelectedTab == tabPageVerb)
+				word = CreateVerb(text, languageIsoCode, description);
 
 			if (word != null)
 			{
@@ -125,6 +129,14 @@ namespace ProiectPAW
 			return adj;
 		}
 
+		private Word CreateVerb(string text, string languageIsoCode, string description)
+		{
+			Verb verb = new Verb(text, languageIsoCode, description);
+			foreach (VerbConjugation conjugation in this.currConjugations)
+				verb.Conjugations.Add(conjugation);
+
+			return verb;
+		}
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
@@ -150,7 +162,7 @@ namespace ProiectPAW
 
 		private void wordTextTb_TextChanged(object sender, EventArgs e)
 		{
-			if(wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+			if(wordAddTabCtrl.SelectedTab == tabPageAdjective)
 			{
 				mascSngTb.Text = wordTextTb.Text;
 			}
@@ -158,8 +170,22 @@ namespace ProiectPAW
 
 		private void wordAddTabCtrl_Selected(object sender, TabControlEventArgs e)
 		{
-			if (wordAddTabCtrl.SelectedTab == adjectiveTabPage)
+			if (wordAddTabCtrl.SelectedTab == tabPageAdjective)
 				mascSngTb.Text = wordTextTb.Text;
+		}
+
+		private void btnAddConjugation_Click(object sender, EventArgs e)
+		{
+			AddConjugationForm acf = new AddConjugationForm(this.currConjugations);
+			acf.ShowDialog();
+			foreach(VerbConjugation conjugation in this.currConjugations)
+			{
+				ListViewItem lvt = new ListViewItem(conjugation.Mood);
+				lvt.SubItems.Add(conjugation.Tense);
+
+				lvConjugations.Items.Add(lvt);
+			}	
+			
 		}
 	}
 }
