@@ -57,11 +57,15 @@
 			this.btnAddConjugation = new System.Windows.Forms.Button();
 			this.colMood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colTense = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.tabPageOther = new System.Windows.Forms.TabPage();
+			this.label3 = new System.Windows.Forms.Label();
+			this.tbPartOfSpeech = new System.Windows.Forms.TextBox();
 			this.wordAddTabCtrl.SuspendLayout();
 			this.tabPageNoun.SuspendLayout();
 			this.tabPageAdjective.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).BeginInit();
 			this.tabPageVerb.SuspendLayout();
+			this.tabPageOther.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// wordAddTabCtrl
@@ -69,6 +73,7 @@
 			this.wordAddTabCtrl.Controls.Add(this.tabPageNoun);
 			this.wordAddTabCtrl.Controls.Add(this.tabPageAdjective);
 			this.wordAddTabCtrl.Controls.Add(this.tabPageVerb);
+			this.wordAddTabCtrl.Controls.Add(this.tabPageOther);
 			this.wordAddTabCtrl.Location = new System.Drawing.Point(526, 57);
 			this.wordAddTabCtrl.Name = "wordAddTabCtrl";
 			this.wordAddTabCtrl.SelectedIndex = 0;
@@ -332,6 +337,34 @@
 			this.colTense.Text = "Tense";
 			this.colTense.Width = 80;
 			// 
+			// tabPageOther
+			// 
+			this.tabPageOther.Controls.Add(this.tbPartOfSpeech);
+			this.tabPageOther.Controls.Add(this.label3);
+			this.tabPageOther.Location = new System.Drawing.Point(10, 47);
+			this.tabPageOther.Name = "tabPageOther";
+			this.tabPageOther.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageOther.Size = new System.Drawing.Size(444, 423);
+			this.tabPageOther.TabIndex = 3;
+			this.tabPageOther.Text = "Other";
+			this.tabPageOther.UseVisualStyleBackColor = true;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(28, 37);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(171, 29);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "Part of Speech";
+			// 
+			// tbPartOfSpeech
+			// 
+			this.tbPartOfSpeech.Location = new System.Drawing.Point(33, 79);
+			this.tbPartOfSpeech.Name = "tbPartOfSpeech";
+			this.tbPartOfSpeech.Size = new System.Drawing.Size(212, 35);
+			this.tbPartOfSpeech.TabIndex = 1;
+			// 
 			// AddWordForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -355,6 +388,8 @@
 			this.tabPageAdjective.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).EndInit();
 			this.tabPageVerb.ResumeLayout(false);
+			this.tabPageOther.ResumeLayout(false);
+			this.tabPageOther.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -390,5 +425,8 @@
 		private System.Windows.Forms.ListView lvConjugations;
 		private System.Windows.Forms.ColumnHeader colMood;
 		private System.Windows.Forms.ColumnHeader colTense;
+		private System.Windows.Forms.TabPage tabPageOther;
+		private System.Windows.Forms.TextBox tbPartOfSpeech;
+		private System.Windows.Forms.Label label3;
 	}
 }

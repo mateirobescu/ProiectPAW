@@ -64,6 +64,7 @@ namespace ProiectPAW
 				{
 					BinaryFormatter bf = new BinaryFormatter();
 					AppData.Instance = (AppData)bf.Deserialize(fs);
+					Word.calculateIdGenerator(AppData.Instance.allWords);
 				}
 			}
 			catch (IOException exc)

@@ -64,6 +64,8 @@ namespace ProiectPAW
 				word = CreateAdjective(text, languageIsoCode, description);
 			else if (wordAddTabCtrl.SelectedTab == tabPageVerb)
 				word = CreateVerb(text, languageIsoCode, description);
+			else if (wordAddTabCtrl.SelectedTab == tabPageOther)
+				word = CreateOther(text, languageIsoCode, description);
 
 			if (word != null)
 			{
@@ -136,6 +138,18 @@ namespace ProiectPAW
 				verb.Conjugations.Add(conjugation);
 
 			return verb;
+		}
+
+		private Word CreateOther(string text, string languageIsoCode, string description)
+		{
+			if(String.IsNullOrWhiteSpace(tbPartOfSpeech.Text))
+				{
+				wordErrorProvider.SetError(tbPartOfSpeech, "This field cannot be empty!");
+				return null;
+			}
+
+			OtherWord otherWord = new OtherWord(text, languageIsoCode, description, tbPartOfSpeech.Text);
+			return otherWord;
 		}
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
