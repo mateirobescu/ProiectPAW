@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,11 @@ namespace ProiectPAW
 		override public string ToString()
 		{
 			return String.Format("Languge[{0}, {1}]", this.isoCode, this.name);
+		}
+
+		public static explicit operator string(Language lang)
+		{
+			return lang.IsoCode;
 		}
 
 		public void WriteToXML(XmlTextWriter writer)

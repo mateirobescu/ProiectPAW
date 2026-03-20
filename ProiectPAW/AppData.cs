@@ -75,6 +75,36 @@ namespace ProiectPAW
 			
 		}
 
+		public Word this[int index]
+		{
+			get
+			{
+				return this.AllWords[index];
+			}
+
+			set
+			{
+				this.AllWords[index] = value;
+			}
+		}
+
+		public Language this[string isoCode]
+		{
+			get 
+			{
+				return this.AllLanguages.Find(lang => lang.IsoCode.Equals(isoCode));	
+			}
+			
+			set
+			{
+				int index = this.AllLanguages.FindIndex(lang => lang.IsoCode.Equals(isoCode));
+				if (index == -1)
+					this.AllLanguages.Add(value);
+				else
+					this.AllLanguages[index] = value;
+			}
+		}
+
 		public void ExportToXML(string filename)
 		{
 			MemoryStream ms = new MemoryStream();

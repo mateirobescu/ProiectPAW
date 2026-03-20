@@ -66,7 +66,7 @@ namespace ProiectPAW
 
 				currItem.SubItems.Add(language);
 				currItem.SubItems.Add(w.Description);
-
+				currItem.Tag = w.Id;
 
 				lvWords.Items.Add(currItem);
 			}
@@ -118,6 +118,28 @@ namespace ProiectPAW
 					}
 				}
 			}
+		}
+
+		private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			ListViewItem wordToDelete = lvWords.SelectedItems[0];
+
+			DialogResult result = MessageBox.Show(
+			$"Are you sure you want to delete the word '{wordToDelete.Text}'?",
+			"Confirm Deletion",
+			MessageBoxButtons.YesNo,
+			MessageBoxIcon.Warning);
+
+			if(result == DialogResult.Yes)
+			{
+				long idToDelete = (long)wordToDelete.Tag;
+				Data.AllWords.RemoveAll(w => w.Id == idToDelete);
+			}
+		}
+
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			this.displayWords(this.performSearch());
 		}
 	}
 }

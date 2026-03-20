@@ -9,7 +9,7 @@ using System.Xml;
 namespace ProiectPAW
 {
 	[Serializable]
-	public class VerbConjugation : IXmlExportable
+	public class VerbConjugation : IXmlExportable, ICloneable, IComparable
 	{
 		private string mood;
 		private string tense;
@@ -88,6 +88,25 @@ namespace ProiectPAW
 				}
 
 			writer.WriteEndElement();
+		}
+
+		public object Clone()
+		{
+			VerbConjugation vc = (VerbConjugation)this.MemberwiseClone();
+			vc.conjugations = (string[])this.conjugations.Clone();
+			return vc;
+		}
+
+		public int CompareTo(object obj)
+		{
+			if (obj == null)
+				return 1;
+			if (!(obj is VerbConjugation))
+				throw new ArgumentException("The object is not a VerbConjugation!");
+
+			VerbConjugation other = (VerbConjugation)obj;
+
+			return this.conjugations.Length.CompareTo(other.conjugations.Length);
 		}
 	}
 }

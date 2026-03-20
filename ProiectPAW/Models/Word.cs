@@ -17,7 +17,7 @@ namespace ProiectPAW
 		private Dictionary<string, List<long>> translations;
 		private static long idGenerator;
 
-		public string Id { get => id.ToString(); }
+		public long Id { get => id; }
 		public string Text { get => text; }
 		public string Description { get => description; }
 		public string LanguageIsoCode { get => languageIsoCode; }
@@ -67,6 +67,24 @@ namespace ProiectPAW
 
 			return this.id.CompareTo(other.id);
 		}
+
+		public static Word operator +(Word a, Word b)
+		{
+			if(a.LanguageIsoCode != b.LanguageIsoCode)
+			{
+				a.AddTranslation(b);
+				b.AddTranslation(a);
+			}
+			return a;
+		}
+
+		public void AddTranslation(Word other)
+		{
+			if (!this.Translations.ContainsKey(other.languageIsoCode))
+				this.Translations.Add(other.LanguageIsoCode, new List<long>);
+			this.Translations[other.LanguageIsoCode].Add(other.id);
+		}
+
 
 		protected virtual void WriteXmlAttributes(XmlTextWriter writer)
 		{

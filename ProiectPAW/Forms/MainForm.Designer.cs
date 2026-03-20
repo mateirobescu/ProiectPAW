@@ -41,11 +41,12 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.addLangBtn = new System.Windows.Forms.Button();
 			this.addWordBtn = new System.Windows.Forms.Button();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.searchTimer = new System.Windows.Forms.Timer(this.components);
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.btnRefresh = new System.Windows.Forms.Button();
 			this.wordsMenuStrip.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -111,6 +112,7 @@
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
 			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(171, 44);
 			this.deleteToolStripMenuItem1.Text = "Delete";
+			this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
 			// 
 			// searchTb
 			// 
@@ -149,6 +151,33 @@
 			this.addWordBtn.UseVisualStyleBackColor = true;
 			this.addWordBtn.Click += new System.EventHandler(this.addWordBtn_Click);
 			// 
+			// searchTimer
+			// 
+			this.searchTimer.Interval = 400;
+			this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
+			// 
+			// saveToolStripMenuItem
+			// 
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(94, 41);
+			this.saveToolStripMenuItem.Text = "&Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+			// 
+			// exportToolStripMenuItem
+			// 
+			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xMLToolStripMenuItem});
+			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(115, 41);
+			this.exportToolStripMenuItem.Text = "Export";
+			// 
+			// xMLToolStripMenuItem
+			// 
+			this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+			this.xMLToolStripMenuItem.Size = new System.Drawing.Size(220, 48);
+			this.xMLToolStripMenuItem.Text = "XML";
+			this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
@@ -158,42 +187,27 @@
             this.exportToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1488, 47);
+			this.menuStrip1.Size = new System.Drawing.Size(1488, 45);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// saveToolStripMenuItem
+			// btnRefresh
 			// 
-			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(94, 43);
-			this.saveToolStripMenuItem.Text = "&Save";
-			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-			// 
-			// searchTimer
-			// 
-			this.searchTimer.Interval = 400;
-			this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
-			// 
-			// exportToolStripMenuItem
-			// 
-			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xMLToolStripMenuItem});
-			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-			this.exportToolStripMenuItem.Size = new System.Drawing.Size(115, 43);
-			this.exportToolStripMenuItem.Text = "Export";
-			// 
-			// xMLToolStripMenuItem
-			// 
-			this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-			this.xMLToolStripMenuItem.Size = new System.Drawing.Size(403, 48);
-			this.xMLToolStripMenuItem.Text = "XML";
-			this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+			this.btnRefresh.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnRefresh.Location = new System.Drawing.Point(1026, 120);
+			this.btnRefresh.Name = "btnRefresh";
+			this.btnRefresh.Size = new System.Drawing.Size(55, 61);
+			this.btnRefresh.TabIndex = 7;
+			this.btnRefresh.Text = "";
+			this.btnRefresh.UseVisualStyleBackColor = true;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1488, 1030);
+			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.addWordBtn);
 			this.Controls.Add(this.addLangBtn);
 			this.Controls.Add(this.menuStrip1);
@@ -222,15 +236,16 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button addLangBtn;
 		private System.Windows.Forms.Button addWordBtn;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.Timer searchTimer;
 		private System.Windows.Forms.ContextMenuStrip wordsMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.Button btnRefresh;
 	}
 }
 
