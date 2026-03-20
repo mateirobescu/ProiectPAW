@@ -51,7 +51,14 @@
 			<xs:element name="Translations" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="TranslatedWordId" type="xs:integer" maxOccurs="unbounded"/>
+						<xs:element name="Translation" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="IsoCode" type="xs:string"/>
+									<xs:element name="WordId" type="xs:integer"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

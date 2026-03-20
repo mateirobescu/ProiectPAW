@@ -23,7 +23,7 @@ namespace ProiectPAW
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			AppData.LoadFromBinary(BINARY_FILENAME);
+			this.Data.LoadFromBinary(BINARY_FILENAME);
 
 			this.displayWords(Data.AllWords);	
 		}
@@ -44,7 +44,7 @@ namespace ProiectPAW
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			AppData.saveToBinary(this.Data, BINARY_FILENAME);
+			this.Data.saveToBinary(this.Data, BINARY_FILENAME);
 			MessageBox.Show("Data was saved succesfully!");
 		}
 
@@ -59,7 +59,7 @@ namespace ProiectPAW
 				string language = "";
 				foreach (Language l in Data.AllLanguages)
 					if (l.IsoCode == w.LanguageIsoCode)
-						language = l.DefaultName;
+						language = l.Name;
 
 				if (String.IsNullOrEmpty(language))
 					language = w.LanguageIsoCode;
@@ -95,5 +95,29 @@ namespace ProiectPAW
 				).ToList();
 		}
 
+		private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (SaveFileDialog sfd = new SaveFileDialog())
+			{
+				sfd.Title = "Export to XML";
+				sfd.Filter = "XML file (*.xml)|*.xml";
+				sfd.DefaultExt = "xml";
+				sfd.FileName = "dictionary.xml";
+
+				if(sfd.ShowDialog() == DialogResult.OK)
+				{
+					try
+					{
+						this.Data.ExportToXML(sfd.FileName);
+						MessageBox.Show("Data Exported to XML succesfully!", "Succes",MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show($"An error appeared when exporting: {ex.Message}", "Error",
+							MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
 	}
 }

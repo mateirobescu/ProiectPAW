@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ProiectPAW
 {
@@ -38,7 +39,7 @@ namespace ProiectPAW
 			return String.Join(" ", this.AllLanguages) + Environment.NewLine + String.Join(" ", this.AllWords);
 		}
 
-		public static void saveToBinary(AppData appData, string fileName)
+		public void saveToBinary(AppData appData, string fileName)
 		{
 			try
 			{
@@ -55,7 +56,7 @@ namespace ProiectPAW
 
 		}
 
-		public static void LoadFromBinary(string fileName)
+		public void LoadFromBinary(string fileName)
 		{
 			try
 			{
@@ -74,6 +75,45 @@ namespace ProiectPAW
 			
 		}
 
+		public void ExportToXML(string filename)
+		{
+			MemoryStream ms = new MemoryStream();
+			XmlTextWriter writer = new XmlTextWriter(ms, Encoding.UTF8);
+			writer.Formatting = Formatting.Indented;
 
+			writer.WriteStartDocument();
+
+			writer.WriteStartElement("Dictionary", "http://tempuri.org/schema.xsd");
+			writer.WriteAttributeString("xmlns", "xsi", null, "http://www.w3.org/2001/XMLSchema-instance");
+			writer.WriteAttributeString("xsi", "schemaLocation", null, "http://tempuri.org/schema.xsd schema.xsd");
+
+			writer.WriteStartElement("Languages");
+
+			foreach (Language lang in this.AllLanguages)
+				lang.WriteToXML(writer);
+
+			writer.WriteEndElement();
+
+			writer.WriteStartElement("Words");
+
+			foreach (Word word in this.AllWords)
+				word.WriteToXML(writer);
+
+
+			writer.WriteEndElement();
+
+			writer.WriteEndDocument();
+
+			writer.Close();
+
+			ms.Close();
+			string xml = Encoding.UTF8.GetString(ms.ToArray());
+
+			using (StreamWriter sw = new StreamWriter(filename))
+			{
+				sw.WriteLine(xml);
+			}
+
+		}
 	}
 }

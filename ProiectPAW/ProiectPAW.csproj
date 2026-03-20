@@ -47,50 +47,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddConjugationForm.cs">
+    <Compile Include="Forms\AddConjugationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddConjugationForm.Designer.cs">
+    <Compile Include="Forms\AddConjugationForm.Designer.cs">
       <DependentUpon>AddConjugationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddLangForm.cs">
+    <Compile Include="Forms\AddLangForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddLangForm.Designer.cs">
+    <Compile Include="Forms\AddLangForm.Designer.cs">
       <DependentUpon>AddLangForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddWordForm.cs">
+    <Compile Include="Forms\AddWordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddWordForm.Designer.cs">
+    <Compile Include="Forms\AddWordForm.Designer.cs">
       <DependentUpon>AddWordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Adjective.cs" />
+    <Compile Include="Models\Adjective.cs" />
     <Compile Include="AppData.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Language.cs" />
-    <Compile Include="Noun.cs" />
-    <Compile Include="OtherWord.cs" />
+    <Compile Include="Models\IXmlExportable.cs" />
+    <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Noun.cs" />
+    <Compile Include="Models\OtherWord.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Verb.cs" />
-    <Compile Include="VerbConjugation.cs" />
-    <Compile Include="Word.cs" />
-    <EmbeddedResource Include="AddConjugationForm.resx">
+    <Compile Include="Models\Verb.cs" />
+    <Compile Include="Models\VerbConjugation.cs" />
+    <Compile Include="Models\Word.cs" />
+    <EmbeddedResource Include="Forms\AddConjugationForm.resx">
       <DependentUpon>AddConjugationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddLangForm.resx">
+    <EmbeddedResource Include="Forms\AddLangForm.resx">
       <DependentUpon>AddLangForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddWordForm.resx">
+    <EmbeddedResource Include="Forms\AddWordForm.resx">
       <DependentUpon>AddWordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

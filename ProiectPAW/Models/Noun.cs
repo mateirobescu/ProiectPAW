@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ProiectPAW
 {
@@ -25,5 +26,18 @@ namespace ProiectPAW
 			this.gender = gender;
 		}
 
+		protected override void WriteXmlAttributes(XmlTextWriter writer)
+		{
+			base.WriteXmlAttributes(writer);
+			writer.WriteStartElement("Gender");
+			writer.WriteValue((int)this.gender);
+			writer.WriteEndElement();
+		}
+		public override void WriteToXML(XmlTextWriter writer)
+		{
+			writer.WriteStartElement("Noun");
+			this.WriteXmlAttributes(writer);
+			writer.WriteEndElement();
+		}
 	}
 }
