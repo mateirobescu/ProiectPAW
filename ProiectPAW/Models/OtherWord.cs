@@ -15,7 +15,7 @@ namespace ProiectPAW
 		public OtherWord(string text, string languageIsoCode, string description, string partOfSpeech)
 			: base(text, languageIsoCode, description)
 		{
-			this.partOfSpeech = partOfSpeech;
+			this.partOfSpeech = partOfSpeech.ToLower();
 		}
 
 		protected override void WriteXmlAttributes(XmlTextWriter writer)

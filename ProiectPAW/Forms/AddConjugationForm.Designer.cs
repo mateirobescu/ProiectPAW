@@ -55,7 +55,7 @@
 			this.tbTense.Location = new System.Drawing.Point(459, 71);
 			this.tbTense.Name = "tbTense";
 			this.tbTense.Size = new System.Drawing.Size(260, 35);
-			this.tbTense.TabIndex = 31;
+			this.tbTense.TabIndex = 1;
 			// 
 			// label13
 			// 
@@ -71,7 +71,7 @@
 			this.tbMood.Location = new System.Drawing.Point(140, 71);
 			this.tbMood.Name = "tbMood";
 			this.tbMood.Size = new System.Drawing.Size(256, 35);
-			this.tbMood.TabIndex = 29;
+			this.tbMood.TabIndex = 0;
 			// 
 			// label12
 			// 
@@ -87,7 +87,7 @@
 			this.tb1Sg.Location = new System.Drawing.Point(307, 135);
 			this.tb1Sg.Name = "tb1Sg";
 			this.tb1Sg.Size = new System.Drawing.Size(229, 35);
-			this.tb1Sg.TabIndex = 27;
+			this.tb1Sg.TabIndex = 2;
 			// 
 			// label11
 			// 
@@ -103,7 +103,7 @@
 			this.tb3Pl.Location = new System.Drawing.Point(307, 381);
 			this.tb3Pl.Name = "tb3Pl";
 			this.tb3Pl.Size = new System.Drawing.Size(229, 35);
-			this.tb3Pl.TabIndex = 25;
+			this.tb3Pl.TabIndex = 7;
 			// 
 			// label10
 			// 
@@ -119,7 +119,7 @@
 			this.tb2Pl.Location = new System.Drawing.Point(307, 330);
 			this.tb2Pl.Name = "tb2Pl";
 			this.tb2Pl.Size = new System.Drawing.Size(229, 35);
-			this.tb2Pl.TabIndex = 23;
+			this.tb2Pl.TabIndex = 6;
 			// 
 			// label9
 			// 
@@ -135,7 +135,7 @@
 			this.tb1Pl.Location = new System.Drawing.Point(307, 278);
 			this.tb1Pl.Name = "tb1Pl";
 			this.tb1Pl.Size = new System.Drawing.Size(229, 35);
-			this.tb1Pl.TabIndex = 21;
+			this.tb1Pl.TabIndex = 5;
 			// 
 			// label8
 			// 
@@ -151,7 +151,7 @@
 			this.tb3Sg.Location = new System.Drawing.Point(307, 232);
 			this.tb3Sg.Name = "tb3Sg";
 			this.tb3Sg.Size = new System.Drawing.Size(229, 35);
-			this.tb3Sg.TabIndex = 19;
+			this.tb3Sg.TabIndex = 4;
 			// 
 			// label7
 			// 
@@ -167,7 +167,7 @@
 			this.tb2Sg.Location = new System.Drawing.Point(307, 182);
 			this.tb2Sg.Name = "tb2Sg";
 			this.tb2Sg.Size = new System.Drawing.Size(229, 35);
-			this.tb2Sg.TabIndex = 17;
+			this.tb2Sg.TabIndex = 3;
 			// 
 			// label3
 			// 
@@ -183,7 +183,7 @@
 			this.btAddConjugation.Location = new System.Drawing.Point(307, 445);
 			this.btAddConjugation.Name = "btAddConjugation";
 			this.btAddConjugation.Size = new System.Drawing.Size(229, 106);
-			this.btAddConjugation.TabIndex = 32;
+			this.btAddConjugation.TabIndex = 8;
 			this.btAddConjugation.Text = "Add Conjugation";
 			this.btAddConjugation.UseVisualStyleBackColor = true;
 			this.btAddConjugation.Click += new System.EventHandler(this.btAddConjugation_Click);
@@ -192,7 +192,7 @@
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
-			// AddConjugation
+			// AddConjugationForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +214,7 @@
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.tb2Sg);
 			this.Controls.Add(this.label3);
-			this.Name = "AddConjugation";
+			this.Name = "AddConjugationForm";
 			this.Text = "AddConjugation";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);

@@ -17,12 +17,14 @@ namespace ProiectPAW
 		public string IsoCode { get => isoCode; set => isoCode = value; }
 		public string Name { get => name; set => name = value; }
 
+		public string CapName { get => char.ToUpper(name[0]) + name.Substring(1); }
+
 		private Language() { }
 
 		public Language(string isoCode, string name)
 		{
 			this.isoCode = isoCode.ToUpper();
-			this.name = name;
+			this.name = name.ToLower();
 		}
 
 		override public string ToString()

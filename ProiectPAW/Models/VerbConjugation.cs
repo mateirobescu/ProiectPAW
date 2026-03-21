@@ -20,9 +20,11 @@ namespace ProiectPAW
 
 		public VerbConjugation(string mood, string tense, string[] conjugations)
 		{
-			this.mood = mood;
-			this.tense = tense;
+			this.mood = mood.ToLower();
+			this.tense = tense.ToLower();
 			this.conjugations = (string[])conjugations.Clone();
+			for (int i = 0; i < conjugations.Length; i++)
+				conjugations[i] = conjugations[i].ToLower();
 		}
 
 		public void WriteToXML(XmlTextWriter writer)

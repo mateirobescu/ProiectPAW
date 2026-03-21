@@ -42,8 +42,26 @@ namespace ProiectPAW
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			this.Data.saveToBinary(this.Data, BINARY_FILENAME);
-			MessageBox.Show("Data was saved succesfully!");
+			try
+			{
+				this.Data.saveToBinary(this.Data, BINARY_FILENAME);
+
+				MessageBox.Show(
+					"The dictionary data has been successfully saved to the binary file.",
+					"Save Successful",
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Information
+				);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(
+					$"An error occurred while saving the data:\n{ex.Message}",
+					"Save Error",
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+			}
 		}
 
 		private void DisplayWords(ReadOnlyCollection<Word> words, ListView listView)
@@ -52,12 +70,12 @@ namespace ProiectPAW
 
 			foreach (Word w in words)
 			{
-				ListViewItem currItem = new ListViewItem(w.Text);
+				ListViewItem currItem = new ListViewItem(w.CapText);
 
 				string language = "";
 				foreach (Language l in Data.AllLanguages)
 					if (l.IsoCode == w.LanguageIsoCode)
-						language = l.Name;
+						language = l.CapName;
 
 				if (String.IsNullOrEmpty(language))
 					language = w.LanguageIsoCode;
@@ -147,6 +165,26 @@ namespace ProiectPAW
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
 			this.UpdateMainListView();
+		}
+
+		private void editToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show(
+				"This feature is a work in progress. Will be implemented soon!",
+				"Work in Progress",
+				MessageBoxButtons.OK,
+				MessageBoxIcon.Exclamation
+			);
+		}
+
+		private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show(
+				"This feature is a work in progress. Will be implemented soon!",
+				"Work in Progress",
+				MessageBoxButtons.OK,
+				MessageBoxIcon.Exclamation
+			);
 		}
 	}
 }

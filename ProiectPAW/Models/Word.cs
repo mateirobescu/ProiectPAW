@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace ProiectPAW
 {
@@ -19,6 +20,8 @@ namespace ProiectPAW
 
 		public long Id { get => id; }
 		public string Text { get => text; }
+		public string CapText { get => char.ToUpper(text[0]) + text.Substring(1); }
+
 		public string Description { get => description; }
 		public string LanguageIsoCode { get => languageIsoCode; }
 		public Dictionary<string, List<long>> Translations { get => translations; }
@@ -28,7 +31,7 @@ namespace ProiectPAW
 		public Word(string text, string languageIsoCode, string description)
 		{
 			this.id = Word.idGenerator++;
-			this.text = text;
+			this.text = text.ToLower();
 			this.languageIsoCode = languageIsoCode.ToUpper();
 			this.description = description;
 			this.translations = new Dictionary<string, List<long>>();

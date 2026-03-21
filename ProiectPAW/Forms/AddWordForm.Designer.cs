@@ -44,6 +44,14 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.mascSngTb = new System.Windows.Forms.TextBox();
 			this.mascSngLb = new System.Windows.Forms.Label();
+			this.tabPageVerb = new System.Windows.Forms.TabPage();
+			this.btnAddConjugation = new System.Windows.Forms.Button();
+			this.lvConjugations = new System.Windows.Forms.ListView();
+			this.colMood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colTense = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.tabPageOther = new System.Windows.Forms.TabPage();
+			this.tbPartOfSpeech = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.addWordBtn = new System.Windows.Forms.Button();
 			this.wordTextTb = new System.Windows.Forms.TextBox();
 			this.wordLb = new System.Windows.Forms.Label();
@@ -52,20 +60,12 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.descriptionRtb = new System.Windows.Forms.RichTextBox();
 			this.wordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-			this.tabPageVerb = new System.Windows.Forms.TabPage();
-			this.lvConjugations = new System.Windows.Forms.ListView();
-			this.btnAddConjugation = new System.Windows.Forms.Button();
-			this.colMood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colTense = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.tabPageOther = new System.Windows.Forms.TabPage();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tbPartOfSpeech = new System.Windows.Forms.TextBox();
 			this.wordAddTabCtrl.SuspendLayout();
 			this.tabPageNoun.SuspendLayout();
 			this.tabPageAdjective.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).BeginInit();
 			this.tabPageVerb.SuspendLayout();
 			this.tabPageOther.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// wordAddTabCtrl
@@ -78,7 +78,7 @@
 			this.wordAddTabCtrl.Name = "wordAddTabCtrl";
 			this.wordAddTabCtrl.SelectedIndex = 0;
 			this.wordAddTabCtrl.Size = new System.Drawing.Size(464, 480);
-			this.wordAddTabCtrl.TabIndex = 0;
+			this.wordAddTabCtrl.TabIndex = 3;
 			this.wordAddTabCtrl.Selected += new System.Windows.Forms.TabControlEventHandler(this.wordAddTabCtrl_Selected);
 			// 
 			// tabPageNoun
@@ -100,7 +100,7 @@
 			this.neuterRbtn.Location = new System.Drawing.Point(23, 147);
 			this.neuterRbtn.Name = "neuterRbtn";
 			this.neuterRbtn.Size = new System.Drawing.Size(117, 33);
-			this.neuterRbtn.TabIndex = 2;
+			this.neuterRbtn.TabIndex = 6;
 			this.neuterRbtn.TabStop = true;
 			this.neuterRbtn.Text = "Neuter";
 			this.neuterRbtn.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
 			this.feminineRbtn.Location = new System.Drawing.Point(23, 97);
 			this.feminineRbtn.Name = "feminineRbtn";
 			this.feminineRbtn.Size = new System.Drawing.Size(145, 33);
-			this.feminineRbtn.TabIndex = 1;
+			this.feminineRbtn.TabIndex = 5;
 			this.feminineRbtn.TabStop = true;
 			this.feminineRbtn.Text = "Feminine";
 			this.feminineRbtn.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
 			this.masculineRbtn.Location = new System.Drawing.Point(23, 45);
 			this.masculineRbtn.Name = "masculineRbtn";
 			this.masculineRbtn.Size = new System.Drawing.Size(153, 33);
-			this.masculineRbtn.TabIndex = 0;
+			this.masculineRbtn.TabIndex = 4;
 			this.masculineRbtn.TabStop = true;
 			this.masculineRbtn.Text = "Masculine";
 			this.masculineRbtn.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
 			this.varFormChck.Location = new System.Drawing.Point(21, 39);
 			this.varFormChck.Name = "varFormChck";
 			this.varFormChck.Size = new System.Drawing.Size(197, 33);
-			this.varFormChck.TabIndex = 8;
+			this.varFormChck.TabIndex = 4;
 			this.varFormChck.Text = "Variable Form";
 			this.varFormChck.UseVisualStyleBackColor = true;
 			this.varFormChck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -164,7 +164,7 @@
 			this.femPlrTb.Location = new System.Drawing.Point(11, 373);
 			this.femPlrTb.Name = "femPlrTb";
 			this.femPlrTb.Size = new System.Drawing.Size(282, 35);
-			this.femPlrTb.TabIndex = 7;
+			this.femPlrTb.TabIndex = 8;
 			// 
 			// label6
 			// 
@@ -180,7 +180,7 @@
 			this.mascPlrTb.Location = new System.Drawing.Point(11, 291);
 			this.mascPlrTb.Name = "mascPlrTb";
 			this.mascPlrTb.Size = new System.Drawing.Size(282, 35);
-			this.mascPlrTb.TabIndex = 5;
+			this.mascPlrTb.TabIndex = 7;
 			// 
 			// label5
 			// 
@@ -196,7 +196,7 @@
 			this.femSngTb.Location = new System.Drawing.Point(11, 207);
 			this.femSngTb.Name = "femSngTb";
 			this.femSngTb.Size = new System.Drawing.Size(282, 35);
-			this.femSngTb.TabIndex = 3;
+			this.femSngTb.TabIndex = 6;
 			// 
 			// label4
 			// 
@@ -212,7 +212,7 @@
 			this.mascSngTb.Location = new System.Drawing.Point(11, 125);
 			this.mascSngTb.Name = "mascSngTb";
 			this.mascSngTb.Size = new System.Drawing.Size(282, 35);
-			this.mascSngTb.TabIndex = 1;
+			this.mascSngTb.TabIndex = 5;
 			this.mascSngTb.TextChanged += new System.EventHandler(this.mascSngTb_TextChanged);
 			// 
 			// mascSngLb
@@ -224,13 +224,87 @@
 			this.mascSngLb.TabIndex = 0;
 			this.mascSngLb.Text = "Masculine Singular";
 			// 
+			// tabPageVerb
+			// 
+			this.tabPageVerb.Controls.Add(this.btnAddConjugation);
+			this.tabPageVerb.Controls.Add(this.lvConjugations);
+			this.tabPageVerb.Location = new System.Drawing.Point(10, 47);
+			this.tabPageVerb.Name = "tabPageVerb";
+			this.tabPageVerb.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageVerb.Size = new System.Drawing.Size(444, 423);
+			this.tabPageVerb.TabIndex = 2;
+			this.tabPageVerb.Text = "Verb";
+			this.tabPageVerb.UseVisualStyleBackColor = true;
+			// 
+			// btnAddConjugation
+			// 
+			this.btnAddConjugation.Location = new System.Drawing.Point(104, 325);
+			this.btnAddConjugation.Name = "btnAddConjugation";
+			this.btnAddConjugation.Size = new System.Drawing.Size(221, 71);
+			this.btnAddConjugation.TabIndex = 1;
+			this.btnAddConjugation.Text = "Add Conjugation";
+			this.btnAddConjugation.UseVisualStyleBackColor = true;
+			this.btnAddConjugation.Click += new System.EventHandler(this.btnAddConjugation_Click);
+			// 
+			// lvConjugations
+			// 
+			this.lvConjugations.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colMood,
+            this.colTense});
+			this.lvConjugations.GridLines = true;
+			this.lvConjugations.HideSelection = false;
+			this.lvConjugations.Location = new System.Drawing.Point(30, 31);
+			this.lvConjugations.Name = "lvConjugations";
+			this.lvConjugations.Size = new System.Drawing.Size(373, 251);
+			this.lvConjugations.TabIndex = 0;
+			this.lvConjugations.UseCompatibleStateImageBehavior = false;
+			this.lvConjugations.View = System.Windows.Forms.View.Details;
+			// 
+			// colMood
+			// 
+			this.colMood.Text = "Mood";
+			this.colMood.Width = 80;
+			// 
+			// colTense
+			// 
+			this.colTense.Text = "Tense";
+			this.colTense.Width = 80;
+			// 
+			// tabPageOther
+			// 
+			this.tabPageOther.Controls.Add(this.tbPartOfSpeech);
+			this.tabPageOther.Controls.Add(this.label3);
+			this.tabPageOther.Location = new System.Drawing.Point(10, 47);
+			this.tabPageOther.Name = "tabPageOther";
+			this.tabPageOther.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageOther.Size = new System.Drawing.Size(444, 423);
+			this.tabPageOther.TabIndex = 3;
+			this.tabPageOther.Text = "Other";
+			this.tabPageOther.UseVisualStyleBackColor = true;
+			// 
+			// tbPartOfSpeech
+			// 
+			this.tbPartOfSpeech.Location = new System.Drawing.Point(33, 79);
+			this.tbPartOfSpeech.Name = "tbPartOfSpeech";
+			this.tbPartOfSpeech.Size = new System.Drawing.Size(212, 35);
+			this.tbPartOfSpeech.TabIndex = 1;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(28, 37);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(171, 29);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "Part of Speech";
+			// 
 			// addWordBtn
 			// 
 			this.addWordBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.addWordBtn.Location = new System.Drawing.Point(318, 567);
 			this.addWordBtn.Name = "addWordBtn";
 			this.addWordBtn.Size = new System.Drawing.Size(393, 71);
-			this.addWordBtn.TabIndex = 1;
+			this.addWordBtn.TabIndex = 9999;
 			this.addWordBtn.Text = "Add Word";
 			this.addWordBtn.UseVisualStyleBackColor = true;
 			this.addWordBtn.Click += new System.EventHandler(this.addWordBtn_Click);
@@ -265,10 +339,11 @@
 			// 
 			this.languageCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.languageCb.FormattingEnabled = true;
+			this.languageCb.IntegralHeight = false;
 			this.languageCb.Location = new System.Drawing.Point(45, 161);
 			this.languageCb.Name = "languageCb";
 			this.languageCb.Size = new System.Drawing.Size(346, 37);
-			this.languageCb.TabIndex = 3;
+			this.languageCb.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -284,86 +359,12 @@
 			this.descriptionRtb.Location = new System.Drawing.Point(45, 249);
 			this.descriptionRtb.Name = "descriptionRtb";
 			this.descriptionRtb.Size = new System.Drawing.Size(346, 288);
-			this.descriptionRtb.TabIndex = 5;
+			this.descriptionRtb.TabIndex = 2;
 			this.descriptionRtb.Text = "";
 			// 
 			// wordErrorProvider
 			// 
 			this.wordErrorProvider.ContainerControl = this;
-			// 
-			// tabPageVerb
-			// 
-			this.tabPageVerb.Controls.Add(this.btnAddConjugation);
-			this.tabPageVerb.Controls.Add(this.lvConjugations);
-			this.tabPageVerb.Location = new System.Drawing.Point(10, 47);
-			this.tabPageVerb.Name = "tabPageVerb";
-			this.tabPageVerb.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageVerb.Size = new System.Drawing.Size(444, 423);
-			this.tabPageVerb.TabIndex = 2;
-			this.tabPageVerb.Text = "Verb";
-			this.tabPageVerb.UseVisualStyleBackColor = true;
-			// 
-			// lvConjugations
-			// 
-			this.lvConjugations.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colMood,
-            this.colTense});
-			this.lvConjugations.GridLines = true;
-			this.lvConjugations.HideSelection = false;
-			this.lvConjugations.Location = new System.Drawing.Point(30, 31);
-			this.lvConjugations.Name = "lvConjugations";
-			this.lvConjugations.Size = new System.Drawing.Size(373, 251);
-			this.lvConjugations.TabIndex = 0;
-			this.lvConjugations.UseCompatibleStateImageBehavior = false;
-			this.lvConjugations.View = System.Windows.Forms.View.Details;
-			// 
-			// btnAddConjugation
-			// 
-			this.btnAddConjugation.Location = new System.Drawing.Point(104, 325);
-			this.btnAddConjugation.Name = "btnAddConjugation";
-			this.btnAddConjugation.Size = new System.Drawing.Size(221, 71);
-			this.btnAddConjugation.TabIndex = 1;
-			this.btnAddConjugation.Text = "Add Conjugation";
-			this.btnAddConjugation.UseVisualStyleBackColor = true;
-			this.btnAddConjugation.Click += new System.EventHandler(this.btnAddConjugation_Click);
-			// 
-			// colMood
-			// 
-			this.colMood.Text = "Mood";
-			this.colMood.Width = 80;
-			// 
-			// colTense
-			// 
-			this.colTense.Text = "Tense";
-			this.colTense.Width = 80;
-			// 
-			// tabPageOther
-			// 
-			this.tabPageOther.Controls.Add(this.tbPartOfSpeech);
-			this.tabPageOther.Controls.Add(this.label3);
-			this.tabPageOther.Location = new System.Drawing.Point(10, 47);
-			this.tabPageOther.Name = "tabPageOther";
-			this.tabPageOther.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageOther.Size = new System.Drawing.Size(444, 423);
-			this.tabPageOther.TabIndex = 3;
-			this.tabPageOther.Text = "Other";
-			this.tabPageOther.UseVisualStyleBackColor = true;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(28, 37);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(171, 29);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "Part of Speech";
-			// 
-			// tbPartOfSpeech
-			// 
-			this.tbPartOfSpeech.Location = new System.Drawing.Point(33, 79);
-			this.tbPartOfSpeech.Name = "tbPartOfSpeech";
-			this.tbPartOfSpeech.Size = new System.Drawing.Size(212, 35);
-			this.tbPartOfSpeech.TabIndex = 1;
 			// 
 			// AddWordForm
 			// 
@@ -386,10 +387,10 @@
 			this.tabPageNoun.PerformLayout();
 			this.tabPageAdjective.ResumeLayout(false);
 			this.tabPageAdjective.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).EndInit();
 			this.tabPageVerb.ResumeLayout(false);
 			this.tabPageOther.ResumeLayout(false);
 			this.tabPageOther.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.wordErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

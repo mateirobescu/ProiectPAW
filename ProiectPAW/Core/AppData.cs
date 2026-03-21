@@ -18,6 +18,8 @@ namespace ProiectPAW
 		private List<Language> allLanguages = new List<Language>();
 
 		public delegate void UpdateGraphics();
+
+		[field: NonSerialized]
 		public event UpdateGraphics OnDataChange;
 
 		private static AppData _instance;

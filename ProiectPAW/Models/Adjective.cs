@@ -8,6 +8,7 @@ using System.Xml;
 
 namespace ProiectPAW
 {
+	[Serializable]
 	enum AdjectiveForm
 	{
 		MS,
@@ -29,10 +30,10 @@ namespace ProiectPAW
 			if(hasVariableForm && formsArr != null)
 				this.forms = new Dictionary<AdjectiveForm, string>
 				{
-					[AdjectiveForm.MS] = formsArr[0],
-					[AdjectiveForm.FS] = formsArr[1],
-					[AdjectiveForm.MP] = formsArr[2],
-					[AdjectiveForm.FP] = formsArr[3]
+					[AdjectiveForm.MS] = formsArr[0].ToLower(),
+					[AdjectiveForm.FS] = formsArr[1].ToLower(),
+					[AdjectiveForm.MP] = formsArr[2].ToLower(),
+					[AdjectiveForm.FP] = formsArr[3].ToLower()
 				};
 		}
 

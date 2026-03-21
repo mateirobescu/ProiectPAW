@@ -24,11 +24,11 @@ namespace ProiectPAW
 		private void AddWordForm_Load(object sender, EventArgs e)
 		{
 			List<Language> displayList = new List<Language>();
-			displayList.Add(new Language("", "---Select a Langauge---"));
+			displayList.Add(new Language("", "Select a Langauge"));
 			displayList.AddRange(Data.AllLanguages);
 
 			languageCb.DataSource = displayList;
-			languageCb.DisplayMember = "DefaultName";
+			languageCb.DisplayMember = "CapName";
 			languageCb.ValueMember = "IsoCode";
 		}
 
@@ -193,7 +193,7 @@ namespace ProiectPAW
 			AddConjugationForm acf = new AddConjugationForm(this.currConjugations);
 			acf.ShowDialog();
 
-			lvConjugations.Clear();
+			lvConjugations.Items.Clear();
 			foreach(VerbConjugation conjugation in this.currConjugations)
 			{
 				ListViewItem lvt = new ListViewItem(conjugation.Mood);
@@ -203,5 +203,6 @@ namespace ProiectPAW
 			}	
 			
 		}
+
 	}
 }

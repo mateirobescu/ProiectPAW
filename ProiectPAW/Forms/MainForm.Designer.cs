@@ -93,24 +93,26 @@
             this.deleteToolStripMenuItem,
             this.deleteToolStripMenuItem1});
 			this.wordsMenuStrip.Name = "contextMenuStrip2";
-			this.wordsMenuStrip.Size = new System.Drawing.Size(172, 136);
+			this.wordsMenuStrip.Size = new System.Drawing.Size(331, 186);
 			// 
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-			this.editToolStripMenuItem.Size = new System.Drawing.Size(171, 44);
+			this.editToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
 			this.editToolStripMenuItem.Text = "View";
+			this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem
 			// 
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(171, 44);
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
 			this.deleteToolStripMenuItem.Text = "Edit";
+			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem1
 			// 
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(171, 44);
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(330, 44);
 			this.deleteToolStripMenuItem1.Text = "Delete";
 			this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
 			// 
