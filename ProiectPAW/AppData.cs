@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -16,6 +17,9 @@ namespace ProiectPAW
 		private List<Word> allWords = new List<Word>();
 		private List<Language> allLanguages = new List<Language>();
 
+		public delegate void UpdateGraphics();
+		public event UpdateGraphics OnDataChange;
+
 		private static AppData _instance;
 		public static AppData Instance
 		{
@@ -29,8 +33,8 @@ namespace ProiectPAW
 			set => _instance = value;
 		}
 
-		public List<Word> AllWords { get => this.allWords; }
-		public List<Language> AllLanguages { get => this.allLanguages; }
+		public ReadOnlyCollection<Word> AllWords { get => this.allWords.AsReadOnly(); }
+		public ReadOnlyCollection<Language> AllLanguages { get => this.allLanguages.AsReadOnly(); }
 
 		private AppData() { }
 
@@ -79,12 +83,12 @@ namespace ProiectPAW
 		{
 			get
 			{
-				return this.AllWords[index];
+				return this.allWords[index];
 			}
 
 			set
 			{
-				this.AllWords[index] = value;
+				this.allWords[index] = value;
 			}
 		}
 
@@ -92,17 +96,41 @@ namespace ProiectPAW
 		{
 			get 
 			{
-				return this.AllLanguages.Find(lang => lang.IsoCode.Equals(isoCode));	
+				return this.allLanguages.Find(lang => lang.IsoCode.Equals(isoCode));	
 			}
 			
 			set
 			{
-				int index = this.AllLanguages.FindIndex(lang => lang.IsoCode.Equals(isoCode));
+				int index = this.allLanguages.FindIndex(lang => lang.IsoCode.Equals(isoCode));
 				if (index == -1)
-					this.AllLanguages.Add(value);
+					this.allLanguages.Add(value);
 				else
-					this.AllLanguages[index] = value;
+					this.allLanguages[index] = value;
 			}
+		}
+
+		public void AddWord(Word word)
+		{
+			this.allWords.Add(word);
+			this.OnDataChange.Invoke();
+		}
+
+		public void AddLanguage(Language language)
+		{
+			this.allLanguages.Add(language);
+			this.OnDataChange.Invoke();
+		}
+
+		public void RemoveWord(long wordId)
+		{
+			this.allWords.RemoveAll(w => w.Id == wordId);
+			this.OnDataChange.Invoke();
+		}
+
+		public void RemoveLanguage(String languageIsoCode)
+		{
+			this.allLanguages.RemoveAll(l => l.IsoCode == languageIsoCode);
+			this.OnDataChange.Invoke();
 		}
 
 		public void ExportToXML(string filename)

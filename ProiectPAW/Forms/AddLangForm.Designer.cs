@@ -96,6 +96,7 @@
 			this.Controls.Add(this.iso2CodeTb);
 			this.Name = "AddLangForm";
 			this.Text = "Add Language";
+			this.Load += new System.EventHandler(this.AddLangForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.langErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

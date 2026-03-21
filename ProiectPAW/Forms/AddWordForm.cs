@@ -69,7 +69,7 @@ namespace ProiectPAW
 
 			if (word != null)
 			{
-				Data.AllWords.Add(word);
+				Data.AddWord(word);
 				this.DialogResult = DialogResult.OK;
 				this.Close();
 			}
@@ -192,6 +192,8 @@ namespace ProiectPAW
 		{
 			AddConjugationForm acf = new AddConjugationForm(this.currConjugations);
 			acf.ShowDialog();
+
+			lvConjugations.Clear();
 			foreach(VerbConjugation conjugation in this.currConjugations)
 			{
 				ListViewItem lvt = new ListViewItem(conjugation.Mood);

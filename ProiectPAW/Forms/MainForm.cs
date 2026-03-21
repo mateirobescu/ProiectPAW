@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -18,21 +19,18 @@ namespace ProiectPAW
 		public MainForm()
 		{
 			InitializeComponent();
-
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			this.Data.LoadFromBinary(BINARY_FILENAME);
-
-			this.displayWords(Data.AllWords);	
+			this.DisplayWords(Data.AllWords, lvWords);
+			this.Data.OnDataChange += this.UpdateMainListView;
 		}
 
 		private void addLangBtn_Click(object sender, EventArgs e)
 		{
 			AddLangForm alf = new AddLangForm();
-			//DEBUG
-			MessageBox.Show(String.Join(" ", this.Data.AllLanguages));
 			alf.ShowDialog();
 		}
 
@@ -48,9 +46,9 @@ namespace ProiectPAW
 			MessageBox.Show("Data was saved succesfully!");
 		}
 
-		private void displayWords(List<Word> words)
+		private void DisplayWords(ReadOnlyCollection<Word> words, ListView listView)
 		{
-			lvWords.Items.Clear();
+			listView.Items.Clear();
 
 			foreach (Word w in words)
 			{
@@ -68,8 +66,25 @@ namespace ProiectPAW
 				currItem.SubItems.Add(w.Description);
 				currItem.Tag = w.Id;
 
-				lvWords.Items.Add(currItem);
+				listView.Items.Add(currItem);
 			}
+		}
+
+		private ReadOnlyCollection<Word> QueryWords(string query)
+		{
+			return Data.AllWords.Where(
+					w => w.Text.ToLower().StartsWith(query)
+				).ToList().AsReadOnly();
+		}
+
+		private void QueryAndDisplay(string query, ListView listView)
+		{
+			this.DisplayWords(this.QueryWords(query), listView);
+		}
+
+		private void UpdateMainListView()
+		{
+			this.QueryAndDisplay(searchTb.Text, lvWords);
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
@@ -82,17 +97,9 @@ namespace ProiectPAW
 		private void searchTimer_Tick(object sender, EventArgs e)
 		{
 			searchTimer.Stop();
-			List<Word> wordsFound = performSearch();
-			displayWords(wordsFound);
+			ReadOnlyCollection<Word> wordsFound = QueryWords(searchTb.Text);
+			DisplayWords(wordsFound, lvWords);
 
-		}
-
-		private List<Word> performSearch()
-		{
-			string query = searchTb.Text;
-			return Data.AllWords.Where(
-					w => w.Text.ToLower().StartsWith(query)
-				).ToList();
 		}
 
 		private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,13 +140,13 @@ namespace ProiectPAW
 			if(result == DialogResult.Yes)
 			{
 				long idToDelete = (long)wordToDelete.Tag;
-				Data.AllWords.RemoveAll(w => w.Id == idToDelete);
+				this.Data.RemoveWord(idToDelete);
 			}
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
-			this.displayWords(this.performSearch());
+			this.UpdateMainListView();
 		}
 	}
 }

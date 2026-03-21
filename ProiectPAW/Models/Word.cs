@@ -81,7 +81,7 @@ namespace ProiectPAW
 		public void AddTranslation(Word other)
 		{
 			if (!this.Translations.ContainsKey(other.languageIsoCode))
-				this.Translations.Add(other.LanguageIsoCode, new List<long>);
+				this.Translations.Add(other.LanguageIsoCode, new List<long>());
 			this.Translations[other.LanguageIsoCode].Add(other.id);
 		}
 

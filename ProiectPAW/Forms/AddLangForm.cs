@@ -19,6 +19,11 @@ namespace ProiectPAW
 			InitializeComponent();
 		}
 
+		private void AddLangForm_Load(object sender, EventArgs e)
+		{
+
+		}
+
 		private void addLangBtn_Click(object sender, EventArgs e)
 		{
 			langErrorProvider.Clear();
@@ -51,10 +56,9 @@ namespace ProiectPAW
 				}
 
 			Language newLang = new Language(iso2CodeTb.Text, langNameTb.Text);
-			this.Data.AllLanguages.Add(newLang);
+			this.Data.AddLanguage(newLang);
 			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
-
 	}
 }
