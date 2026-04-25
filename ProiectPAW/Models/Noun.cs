@@ -20,6 +20,10 @@ namespace ProiectPAW
 	public class Noun : Word
 	{
 		Gender gender;
+		public Gender Gender
+		{
+			get => this.gender;
+		}
 		public Noun(string text, string languageIsoCode, string description, Gender gender)
 			: base(text, languageIsoCode, description)
 		{

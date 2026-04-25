@@ -60,6 +60,7 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.descriptionRtb = new System.Windows.Forms.RichTextBox();
 			this.wordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.addTranslationBtn = new System.Windows.Forms.Button();
 			this.wordAddTabCtrl.SuspendLayout();
 			this.tabPageNoun.SuspendLayout();
 			this.tabPageAdjective.SuspendLayout();
@@ -301,9 +302,9 @@
 			// addWordBtn
 			// 
 			this.addWordBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.addWordBtn.Location = new System.Drawing.Point(318, 567);
+			this.addWordBtn.Location = new System.Drawing.Point(45, 563);
 			this.addWordBtn.Name = "addWordBtn";
-			this.addWordBtn.Size = new System.Drawing.Size(393, 71);
+			this.addWordBtn.Size = new System.Drawing.Size(346, 71);
 			this.addWordBtn.TabIndex = 9999;
 			this.addWordBtn.Text = "Add Word";
 			this.addWordBtn.UseVisualStyleBackColor = true;
@@ -366,11 +367,22 @@
 			// 
 			this.wordErrorProvider.ContainerControl = this;
 			// 
+			// addTranslationBtn
+			// 
+			this.addTranslationBtn.Location = new System.Drawing.Point(602, 563);
+			this.addTranslationBtn.Name = "addTranslationBtn";
+			this.addTranslationBtn.Size = new System.Drawing.Size(316, 71);
+			this.addTranslationBtn.TabIndex = 10000;
+			this.addTranslationBtn.Text = "Add Translation";
+			this.addTranslationBtn.UseVisualStyleBackColor = true;
+			this.addTranslationBtn.Click += new System.EventHandler(this.addTranslationBtn_Click);
+			// 
 			// AddWordForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1028, 666);
+			this.Controls.Add(this.addTranslationBtn);
 			this.Controls.Add(this.descriptionRtb);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.languageCb);
@@ -429,5 +441,6 @@
 		private System.Windows.Forms.TabPage tabPageOther;
 		private System.Windows.Forms.TextBox tbPartOfSpeech;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button addTranslationBtn;
 	}
 }

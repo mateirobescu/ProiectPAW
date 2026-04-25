@@ -65,6 +65,12 @@
     <Compile Include="Forms\AddWordForm.Designer.cs">
       <DependentUpon>AddWordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddTranslation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddTranslation.Designer.cs">
+      <DependentUpon>AddTranslation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Adjective.cs" />
     <Compile Include="Core\AppData.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddLangForm.resx">
       <DependentUpon>AddLangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddTranslation.resx">
+      <DependentUpon>AddTranslation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddWordForm.resx">
       <DependentUpon>AddWordForm.cs</DependentUpon>

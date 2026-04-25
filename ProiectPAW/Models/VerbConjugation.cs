@@ -39,14 +39,6 @@ namespace ProiectPAW
 				writer.WriteValue(this.Tense);
 				writer.WriteEndElement();
 
-				if(!String.IsNullOrWhiteSpace(this.conjugations[0]))
-				{
-					writer.WriteStartElement("SG1");
-					writer.WriteValue(this.conjugations[0]);
-					writer.WriteEndElement();
-				}
-
-
 				if (!String.IsNullOrWhiteSpace(this.conjugations[0]))
 				{
 					writer.WriteStartElement("SG1");

@@ -34,8 +34,8 @@
 			this.language = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.wordsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.searchTb = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -89,25 +89,25 @@
 			// 
 			this.wordsMenuStrip.ImageScalingSize = new System.Drawing.Size(36, 36);
 			this.wordsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem,
             this.deleteToolStripMenuItem1});
 			this.wordsMenuStrip.Name = "contextMenuStrip2";
-			this.wordsMenuStrip.Size = new System.Drawing.Size(331, 186);
+			this.wordsMenuStrip.Size = new System.Drawing.Size(172, 136);
+			// 
+			// viewToolStripMenuItem
+			// 
+			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+			this.viewToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
+			this.viewToolStripMenuItem.Text = "View";
+			this.viewToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
-			this.editToolStripMenuItem.Text = "View";
+			this.editToolStripMenuItem.Text = "Edit";
 			this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-			// 
-			// deleteToolStripMenuItem
-			// 
-			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
-			this.deleteToolStripMenuItem.Text = "Edit";
-			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem1
 			// 
@@ -189,9 +189,10 @@
             this.exportToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1488, 45);
+			this.menuStrip1.Size = new System.Drawing.Size(1488, 47);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
+			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
 			// 
 			// btnRefresh
 			// 
@@ -240,8 +241,8 @@
 		private System.Windows.Forms.Button addWordBtn;
 		private System.Windows.Forms.Timer searchTimer;
 		private System.Windows.Forms.ContextMenuStrip wordsMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;

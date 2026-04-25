@@ -11,6 +11,10 @@ namespace ProiectPAW
 	public class OtherWord : Word
 	{
 		string partOfSpeech;
+		public string PartOfSpeech
+		{
+			get => partOfSpeech;
+		}
 
 		public OtherWord(string text, string languageIsoCode, string description, string partOfSpeech)
 			: base(text, languageIsoCode, description)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Xml;
 namespace ProiectPAW
 {
 	[Serializable]
-	enum AdjectiveForm
+	public enum AdjectiveForm
 	{
 		MS,
 		FS,
@@ -22,6 +23,15 @@ namespace ProiectPAW
 	{
 		private bool hasVariableForm;
 		private Dictionary<AdjectiveForm, string> forms;
+		public bool HasVariableForm
+		{
+			get => hasVariableForm;
+		}
+
+		public IReadOnlyDictionary<AdjectiveForm, string> Forms
+		{
+			get => forms;
+		}
 
 		public Adjective(string text, string languageIsoCode, string description, bool hasVariableForm, string[] formsArr)
 			: base(text, languageIsoCode, description)

@@ -24,17 +24,27 @@ namespace ProiectPAW
 
 		public string Description { get => description; }
 		public string LanguageIsoCode { get => languageIsoCode; }
-		public Dictionary<string, List<long>> Translations { get => translations; }
+		public Dictionary<string, List<long>> Translations { get => translations; set => translations = value; }
 
 		private Word() { }
 
-		public Word(string text, string languageIsoCode, string description)
+		public Word(long id, string text, string languageIsoCode, string description)
 		{
-			this.id = Word.idGenerator++;
+
+			this.id = id;
 			this.text = text.ToLower();
 			this.languageIsoCode = languageIsoCode.ToUpper();
 			this.description = description;
 			this.translations = new Dictionary<string, List<long>>();
+		}
+		public Word(string text, string languageIsoCode, string description) : 
+			this(Word.idGenerator++, text, languageIsoCode, description)
+		{ 
+		}
+
+		public void CopyId(Word source)
+		{
+			this.id = source.id;
 		}
 
 		public static void calculateIdGenerator(List<Word> existingWords)

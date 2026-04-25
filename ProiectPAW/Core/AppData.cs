@@ -117,6 +117,13 @@ namespace ProiectPAW
 			this.OnDataChange.Invoke();
 		}
 
+		public void ReplaceWord(Word oldWord, Word newWord)
+		{
+			int pos = this.AllWords.IndexOf(oldWord);
+			this.allWords[pos] = newWord;
+			this.OnDataChange.Invoke();
+		}
+
 		public void AddLanguage(Language language)
 		{
 			this.allLanguages.Add(language);

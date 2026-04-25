@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProiectPAW.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,9 +17,16 @@ namespace ProiectPAW
 	{
 		private AppData Data => AppData.Instance;
 		private List<VerbConjugation> currConjugations = new List<VerbConjugation>();
+		private Dictionary<string, List<long>> currTranslations = new Dictionary<string, List<long>>();
+		private Word existingWord = null;
 		public AddWordForm()
 		{
 			InitializeComponent();
+		}
+
+		public AddWordForm(Word existingWord) : this()
+		{
+			this.existingWord = existingWord;
 		}
 
 		private void AddWordForm_Load(object sender, EventArgs e)
@@ -30,6 +38,64 @@ namespace ProiectPAW
 			languageCb.DataSource = displayList;
 			languageCb.DisplayMember = "CapName";
 			languageCb.ValueMember = "IsoCode";
+
+			if (existingWord == null)
+				return;
+
+			wordTextTb.Text = existingWord.Text;
+			languageCb.SelectedItem = languageCb.Items
+				.Cast<Language>()
+				.First(lang => lang.IsoCode.Equals(existingWord.LanguageIsoCode));
+			descriptionRtb.Text = existingWord.Description;
+			this.currTranslations = existingWord.Translations
+				.ToDictionary(kvp => kvp.Key, kvp => new List<long>(kvp.Value));
+
+			switch (existingWord)
+			{
+				case Verb v:
+					wordAddTabCtrl.SelectedTab = tabPageVerb;
+					foreach(VerbConjugation conjugation in v.Conjugations)
+					{
+						this.currConjugations.Add(conjugation);
+						ListViewItem lvt = new ListViewItem(conjugation.Mood);
+						lvt.SubItems.Add(conjugation.Tense);
+
+						lvConjugations.Items.Add(lvt);
+					}
+
+					break;
+
+				case Noun n:
+					wordAddTabCtrl.SelectedTab = tabPageNoun;
+					if (n.Gender == Gender.Masculine)
+						masculineRbtn.Checked = true;
+					if (n.Gender == Gender.Feminine)
+						feminineRbtn.Checked = true;
+					if (n.Gender == Gender.Neuter)
+						neuterRbtn.Checked = true;
+
+					break;
+
+				case Adjective adj:
+					wordAddTabCtrl.SelectedTab = tabPageAdjective;
+					if(adj.HasVariableForm) {
+						varFormChck.Checked = true;
+						mascSngTb.Text = adj.Forms[AdjectiveForm.MS];
+						femSngTb.Text = adj.Forms[AdjectiveForm.FS];
+						mascPlrTb.Text = adj.Forms[AdjectiveForm.MP];
+						femPlrTb.Text = adj.Forms[AdjectiveForm.FP];
+					}
+					else
+					{
+						varFormChck.Checked = false;
+					}
+					break;
+
+				case OtherWord o:
+					wordAddTabCtrl.SelectedTab = tabPageOther;
+					tbPartOfSpeech.Text = o.PartOfSpeech;
+					break;
+			}
 		}
 
 		private void addWordBtn_Click(object sender, EventArgs e)
@@ -51,7 +117,7 @@ namespace ProiectPAW
 			if (string.IsNullOrWhiteSpace(descriptionRtb.Text))
 			{
 				wordErrorProvider.SetError(descriptionRtb, "Description cannot be empty!");
-				return; // Oprim metoda Save aici
+				return;
 			}
 
 			string text = wordTextTb.Text;
@@ -69,7 +135,14 @@ namespace ProiectPAW
 
 			if (word != null)
 			{
-				Data.AddWord(word);
+				word.Translations = this.currTranslations;
+				if(existingWord != null)
+				{
+					word.CopyId(existingWord);
+					Data.ReplaceWord(existingWord, word);
+				}
+				else
+					Data.AddWord(word);
 				this.DialogResult = DialogResult.OK;
 				this.Close();
 			}
@@ -143,7 +216,7 @@ namespace ProiectPAW
 		private Word CreateOther(string text, string languageIsoCode, string description)
 		{
 			if(String.IsNullOrWhiteSpace(tbPartOfSpeech.Text))
-				{
+			{
 				wordErrorProvider.SetError(tbPartOfSpeech, "This field cannot be empty!");
 				return null;
 			}
@@ -204,5 +277,10 @@ namespace ProiectPAW
 			
 		}
 
+		private void addTranslationBtn_Click(object sender, EventArgs e)
+		{
+			AddTranslation atf = new AddTranslation(currTranslations);
+			atf.ShowDialog();
+		}
 	}
 }
