@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ProiectPAW.Forms;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -192,6 +194,47 @@ namespace ProiectPAW
 		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
 
+		}
+
+		private void printToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			PrintDocument pd = new PrintDocument();
+			pd.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+			PrintPreviewDialog dlg = new PrintPreviewDialog();
+			dlg.Document = pd;
+			dlg.ShowDialog();
+		}
+
+		private int printIndex = 0;
+		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+		{
+			Graphics gr = e.Graphics;
+			Brush b = new SolidBrush(Color.Black);
+			Font f = new Font(FontFamily.GenericSerif, 14);
+			ReadOnlyCollection<Word> words = MainForm.QueryWords(Data.AllWords, searchTb.Text);
+			float y = 20;
+			while (printIndex < words.Count)
+			{
+				string text = words[printIndex].Text + " - " + words[printIndex].Description;
+				gr.DrawString(text, f, b, 20, y);
+				printIndex++;
+				y += 40;
+
+				if(y > e.PageBounds.Height)
+				{
+					e.HasMorePages = true;
+					return;
+				}
+			}
+
+			e.HasMorePages = false;
+			printIndex = 0;
+		}
+
+		private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			StatisticsForm sf = new StatisticsForm();
+			sf.ShowDialog();
 		}
 	}
 }

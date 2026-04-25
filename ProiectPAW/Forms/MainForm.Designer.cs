@@ -46,7 +46,10 @@
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnRefresh = new System.Windows.Forms.Button();
+			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wordsMenuStrip.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -98,21 +101,21 @@
 			// viewToolStripMenuItem
 			// 
 			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-			this.viewToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
+			this.viewToolStripMenuItem.Size = new System.Drawing.Size(171, 44);
 			this.viewToolStripMenuItem.Text = "View";
 			this.viewToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-			this.editToolStripMenuItem.Size = new System.Drawing.Size(330, 44);
+			this.editToolStripMenuItem.Size = new System.Drawing.Size(171, 44);
 			this.editToolStripMenuItem.Text = "Edit";
 			this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem1
 			// 
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(330, 44);
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(171, 44);
 			this.deleteToolStripMenuItem1.Text = "Delete";
 			this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
 			// 
@@ -161,7 +164,7 @@
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(94, 41);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(94, 43);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
@@ -170,7 +173,7 @@
 			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xMLToolStripMenuItem});
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-			this.exportToolStripMenuItem.Size = new System.Drawing.Size(115, 41);
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(115, 43);
 			this.exportToolStripMenuItem.Text = "Export";
 			// 
 			// xMLToolStripMenuItem
@@ -186,13 +189,22 @@
 			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.printToolStripMenuItem,
+            this.statisticsToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1488, 47);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
 			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+			// 
+			// printToolStripMenuItem
+			// 
+			this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+			this.printToolStripMenuItem.Size = new System.Drawing.Size(94, 43);
+			this.printToolStripMenuItem.Text = "Print";
+			this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
 			// 
 			// btnRefresh
 			// 
@@ -204,6 +216,17 @@
 			this.btnRefresh.Text = "";
 			this.btnRefresh.UseVisualStyleBackColor = true;
 			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// printDocument1
+			// 
+			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+			// 
+			// statisticsToolStripMenuItem
+			// 
+			this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
+			this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(141, 43);
+			this.statisticsToolStripMenuItem.Text = "Statistics";
+			this.statisticsToolStripMenuItem.Click += new System.EventHandler(this.statisticsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -249,6 +272,9 @@
 		private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.Button btnRefresh;
+		private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+		private System.Drawing.Printing.PrintDocument printDocument1;
+		private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
 	}
 }
 

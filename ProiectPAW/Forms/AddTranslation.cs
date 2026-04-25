@@ -86,5 +86,11 @@ namespace ProiectPAW.Forms
 
 
 		}
+
+		private void addWordBtn_Click(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.OK;  
+			this.Close();
+		}
 	}
 }

@@ -33,12 +33,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.lvSearch = new System.Windows.Forms.ListView();
 			this.word = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.lvDisplay = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.label2 = new System.Windows.Forms.Label();
 			this.searchTimer = new System.Windows.Forms.Timer(this.components);
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.addWordBtn = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// searchTb
@@ -81,6 +82,10 @@
 			this.word.Text = "Word";
 			this.word.Width = 122;
 			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "Language";
+			// 
 			// lvDisplay
 			// 
 			this.lvDisplay.AllowDrop = true;
@@ -106,6 +111,10 @@
 			this.columnHeader1.Text = "Word";
 			this.columnHeader1.Width = 122;
 			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "Language";
+			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
@@ -119,19 +128,22 @@
 			// 
 			this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
 			// 
-			// columnHeader2
+			// addWordBtn
 			// 
-			this.columnHeader2.Text = "Language";
-			// 
-			// columnHeader3
-			// 
-			this.columnHeader3.Text = "Language";
+			this.addWordBtn.Location = new System.Drawing.Point(561, 731);
+			this.addWordBtn.Name = "addWordBtn";
+			this.addWordBtn.Size = new System.Drawing.Size(245, 69);
+			this.addWordBtn.TabIndex = 7;
+			this.addWordBtn.Text = "Done";
+			this.addWordBtn.UseVisualStyleBackColor = true;
+			this.addWordBtn.Click += new System.EventHandler(this.addWordBtn_Click);
 			// 
 			// AddTranslation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1318, 822);
+			this.Controls.Add(this.addWordBtn);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.lvDisplay);
 			this.Controls.Add(this.lvSearch);
@@ -156,5 +168,6 @@
 		private System.Windows.Forms.Timer searchTimer;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.Button addWordBtn;
 	}
 }
